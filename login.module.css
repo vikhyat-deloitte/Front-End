@@ -1,0 +1,243 @@
+.header {
+	    position: absolute;
+	    left: 0%;
+	    right: 0%;
+	    top: 0%;
+	    bottom: 0%;
+	    Width: 100%;
+	    Height: 72px;
+	    background: linear-gradient(90deg, #061846 26.65%, #283F66 96.3%);
+	    box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.15);
+}
+
+.header_text {
+	    height: 27px;
+	    position: absolute;
+	    left: 1.19%;
+	    right: 84.85%;
+	    top: 28.56%;
+	    font-family: 'Roboto';
+	    font-style: normal;
+	    font-weight: 500;
+	    font-size: 20px;
+	    line-height: 28px;
+	    /* identical to box height, or 140% */
+
+    color: #FFFFFF;
+}
+
+.content {
+	    box-sizing: border-box;
+	    position: absolute;
+	    width: 580px;
+	    height: 445px;
+	    /* right:2%; */
+
+    left: 60%;
+	    top: 269px;
+	    background: linear-gradient(180deg, rgba(6, 24, 70, 0.88) 0%, #415E8D 100%);
+	    border: 1px solid #C7C3C3;
+	    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
+	    border-radius: 5px;
+	    z-index: -1;
+}
+
+.contentreset {
+	    box-sizing: border-box;
+	    position: absolute;
+	    width: 580px;
+	    height: 70%;
+	    /* right:2%; */
+
+    left: 60%;
+	    top: 269px;
+	    background: #415E8D;
+	    border: 1px solid #C7C3C3;
+	    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
+	    border-radius: 5px;
+	    z-index: -1;
+}
+
+.login_logo {
+	    position: absolute;
+	    width: 186px;
+	    height: 186px;
+	    left: 70%;
+	    top: 172px;
+	    background: #ED762F;
+}
+
+.side_text {
+	    position: absolute;
+	    width: 331px;
+	    height: 101px;
+	    left: 228px;
+	    top: 288px;
+	    font-family: 'Roboto';
+	    font-style: normal;
+	    font-weight: 600;
+	    font-size: 21px;
+	    line-height: 50px;
+	    display: flex;
+	    /* align-items: center; */
+
+    flex-direction: column;
+	    color: #071947;
+}
+
+.side_img {
+	    position: absolute;
+	    width: 380px;
+	    height: 277px;
+	    left: 202px;
+	    top: 420px;
+}
+
+.form_login {
+	    margin: 6rem 2rem;
+}
+
+.forms {
+	    box-sizing: border-box;
+	    border: 2px solid red;
+	    /* Auto layout */
+
+
+
+
+    display: flex;
+	    flex-direction: row;
+	    justify-content: center;
+	    align-items: center;
+	    padding: 6px 15px;
+	    gap: 8px;
+	    position: absolute;
+	    width: 208px;
+	    height: 36px;
+	    left: 1054px;
+	    top: 592px;
+	    background: #ED762F;
+	    border: 1px solid #F79357;
+	    /* drop-shadow/button-primary */
+
+
+
+
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+	    border-radius: 2px;
+	    /* Group 26 */
+
+
+
+
+
+    position: absolute;
+	    width: 432px;
+	    height: 292px;
+	    left: 830px;
+	    top: 382px;
+	    /* Button */
+
+
+
+
+
+    box-sizing: border-box;
+	    /* Auto layout */
+
+
+
+
+    display: flex;
+	    flex-direction: row;
+	    justify-content: center;
+	    align-items: center;
+	    padding: 6px 15px;
+	    gap: 8px;
+	    position: absolute;
+	    width: 204px;
+	    height: 36px;
+	    left: 830px;
+	    top: 592px;
+	    background: #FCFDFF;
+	    border: 2px solid rgba(237, 118, 47, 0.46);
+	    /* drop-shadow/button-primary */
+
+
+
+
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+	    border-radius: 2px;
+}
+
+.forget {
+	    color: #99CEFF;
+}
+
+.confirm {
+	    background: #ED762F;
+	    border: 1px solid #F79357;
+	    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+	    border-radius: 2px;
+	    position: absolute;
+	    top: 8%;
+}
+
+.reset {
+	    background: #FCFDFF;
+	    border: 2px solid rgba(237, 118, 47, 0.46);
+	    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+	    border-radius: 2px;
+	    top: 80%;
+}
+
+.btns {
+	    margin-top: 1rem;
+	    display: flex;
+	    flex-direction: row;
+	    justify-content: center;
+	    align-items: center;
+	    padding: 6px 15px;
+	    gap: 8px;
+	    width: 204px;
+	    height: 36px;
+}
+
+.password {
+	    /* width: 180px;
+
+    height: 22px; */;
+}
+
+.hr {
+	    border-radius: 28px;
+	    margin: 1rem;
+	    padding: 1px;
+	    background-color: white;
+}
+
+.holder {
+	    /* Field */
+
+
+
+
+
+box-sizing: border-box;
+	background: #415E8D;
+/* Auto layout */
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0px;
+	width: 432px;
+	height: 45px;
+	border-top: #415E8D;
+	border-right: #415E8D;
+	border-left: #415E8D;
+	border-bottom: #415E8D;
+	border-radius: 2px;
+/* Inside auto layout */
+	flex: none;
+	order: 1;
+}
