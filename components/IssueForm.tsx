@@ -4,13 +4,14 @@ import { Button, Form, Input, Radio } from 'antd';
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
 import BaseLayout from '@/components/layout';
+import { error } from 'console';
 
 type LayoutType = Parameters<typeof Form>[0]['layout'];
 
 const IssueForm: React.FC = () => {
   const [form] = Form.useForm();
   const [formLayout, setFormLayout] = useState<LayoutType>('horizontal');
-
+    const[userId,setUserId]=useState(0)
   const onFormLayoutChange = ({ layout }: { layout: LayoutType }) => {
     setFormLayout(layout);
   };
@@ -44,11 +45,43 @@ const IssueForm: React.FC = () => {
     if(!statuses.length)getStatus()
     if(!types.length)getType()
     if(!priorities.length)getPriority()
+    if(!userId )setUserId(parseInt(""+localStorage.getItem('id')))
+    })
+    async function handleIssueData(event:any):Promise<void>{
+        event.preventDefault()
+        const namesHeader=['title','description','assigneeId','statusId','typeId','priorityId','storyPoints','start_date','end_date']
+        const intHeader=['assigneeId','statusId','typeId','priorityId']
+        let data={}
+
+        for(let header of namesHeader){
+            console.log(header)
+            data[header] = event.target[header].value
+        }
+        for(let header of intHeader){
+            console.log(header)
+            data[header] = parseInt(""+(event.target[header].value))
+        }
+        data['reporterId']=userId
+        data['epicId']=6
+        data['projectId']=3
+        console.log("HERE",data,userId)
+        await axios({
+            method: 'post',
+            url: 'http://localhost:3002/issues/create',
+            data: data
+        })
+        .then((res)=>{
+            console.log(res)
+        })
+        .catch((error)=>{console.log(error)})
+        
     }
-  ) 
+
+    
+  
   return (
     <>
-     <Form className='formHU'>
+     <form className='formHU' onSubmit={handleIssueData} >
        <div id="IssueAssigneeStatus">
             <div className="formHUTitle" >
                 <div className='mainFormTitle'>
@@ -56,22 +89,22 @@ const IssueForm: React.FC = () => {
                 </div>
             </div>
             <div className='subTitle'>Title</div>
-            <Input className='inpField' placeholder="enter issue" />
-         
+            <Input className='inpField' name="title" placeholder="enter issue" />
+
             <br/>
              <br/>
             <div className='subTitle'>Description</div>
-             <textarea className='inpField' placeholder="enter description" />
+             <textarea className='inpField' name='description' placeholder="enter description" />
              <br/>
              <br/>
             <div className="row">
                 <div className='col-6'>
                     <div className='subTitle'>Assignee</div>
-                    <Input type='text' className='inpField2' placeholder="enter assignee" />
+                    <Input type='text' className='inpField2' name='assigneeId' placeholder="enter assignee" />
                 </div>
                 <div className='col-6'>
                     <div className='subTitle'>Status</div>
-                    <select className='inpField2' id='statusDropdown' name='status' placeholder="enter status" >
+                    <select className='inpField2' id='statusDropdown' name='statusId' placeholder="enter status" >
                         <>
                             {statuses? statuses.map((statusDetail)=><option  value={statusDetail.sId} selected>{""+statusDetail.sType}</option>
 ):<></> }
@@ -82,7 +115,7 @@ const IssueForm: React.FC = () => {
             <div className="row">
                 <div className='col-4'>
                     <div className='subTitle'>Type</div>
-                    <select className='inpField2' id='typeDropdown' name='type' placeholder="enter type" >
+                    <select className='inpField2' id='typeDropdown' name='typeId' placeholder="enter type" >
                         <>
                             {types? types.map((typeDetail)=><option  value={typeDetail.tId} selected>{""+typeDetail.tType}</option>):<></> }
                         </>
@@ -90,7 +123,7 @@ const IssueForm: React.FC = () => {
                 </div>
                 <div className='col-4'>
                     <div className='subTitle'>Priority</div>
-                    <select className='inpField2' id='priorityDropdown' name='priority' placeholder="enter priority" >
+                    <select className='inpField2' id='priorityDropdown' name='priorityId' placeholder="enter priority" >
                         <>
                             {priorities? priorities.map((priorityDetail)=><option  value={priorityDetail.priorityId} selected>{""+priorityDetail.PType}</option>):<></> }
                         </>
@@ -98,17 +131,17 @@ const IssueForm: React.FC = () => {
                 </div>
                 <div className='col-4'>
                     <div className='subTitle'>Story Points</div>
-                    <Input className='inpField2' type='number' min={1} required/> 
+                    <Input className='inpField2' type='number' name="storyPoints" min={1} required/> 
                 </div>
             </div>
             <div className="row">
                 <div className='col-6'>
                     <div className='subTitle'>Start Date</div>
-                    <Input type='date' className='inpField2' placeholder="choose start date" />
+                    <Input type='date' className='inpField2' name="start_date" placeholder="choose start date" />
                 </div>
                 <div className='col-6'>
                     <div className='subTitle'>End Date</div>
-                    <Input type='date' className='inpField2' placeholder="choose end date" />
+                    <Input type='date' className='inpField2' name="end_date" placeholder="choose end date" />
                 </div>
             </div>
             <div className='row'>
@@ -116,11 +149,11 @@ const IssueForm: React.FC = () => {
                     <button className="resetButton" type='reset' value='Reset'>Reset</button>
                 </div>
                 <div className='col-6'>
-                    <button className="submitButton" type='reset' value='Reset'>Submit</button>
+                    <button className="submitButton" type='submit' value='Submit' >Submit</button>
                 </div>
             </div>
        </div>
-     </Form>
+     </form>
      </>
     /* <div className="formHU">
         <div className='formHUTitle'>
@@ -136,4 +169,5 @@ const IssueForm: React.FC = () => {
 };
 
 export default IssueForm;
+
 
